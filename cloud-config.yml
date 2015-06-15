@@ -5,5 +5,10 @@ ssh_authorized_keys:
 rancher:
   network:
     interfaces:
-      eth*:
+      eth0:
         dhcp: true
+
+    dns:
+      nameservers:
+    	- 8.8.8.8
+    	- 8.8.8.8
