@@ -1,0 +1,34 @@
+#cloud-config
+
+coreos:
+  etcd2:
+    discovery: https://discovery.etcd.io/87447db26ff688b3a0acbb6787e10225
+    addr: 10.0.0.1:4001
+    peer-addr: 10.0.0.1:7001
+
+  update:
+    reboot-strategy: etcd-lock
+    group: stable
+    server: "http://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso"
+
+  fleet:
+    metadata: "region=localhost,provider=virtualbox,environment=demo,role=seed"
+
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: 00-eth0.network
+      runtime: true
+      content: |
+        [Match]
+        Name=eth0
+
+        [Network]
+        DNS=8.8.8.8
+        DHCP=yes
+
+hostname: coreos-seed-00
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDu0CTAN750SR4y8Rr/2Rx3DIq8qwhl3E/0XtiEDK45eYXeGlVc58YHg1GLXyQPByiqsc2JcQfLMp/fCWdJYkWsExus91M99c1UwCMUOwpfDW0h8Hvv61/7mSU6NmO8RjN6fhyo3pLWE34tYY1Nt8mxB/T7zfSTlXZ28UuQAv4i+Lk8bW46Npk1byVLbx28LDtUy7vp2wfCKqZvOuT3KMxafBkR7geWSHHpW1ifNi6diZOpEXZFJ9dwfKUv3LsrogloA3YHNIRVydqDyFG6vRYI9Wp7nHFYv91HKPGevEnhka0sql2J4w/TegDIUJC0/pid8hbPfZgG1ekFWh851l9t
