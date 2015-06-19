@@ -15,8 +15,9 @@ coreos:
       content: |
           [Match]
           Name=enp0s3
+
           [Network]
-          Address=10.0.0.1
+          Address=10.0.0.1/24
           Gateway=10.0.0.254
           DNS=8.8.8.8
 
