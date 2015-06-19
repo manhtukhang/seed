@@ -10,7 +10,7 @@ coreos:
       command: start
     - name: fleet.service
       command: start
-    - name: 00-eth0.network
+    - name: 00-enp0s3.network
       runtime: true
       content: |
           [Match]
