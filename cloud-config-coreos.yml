@@ -14,8 +14,11 @@ coreos:
       runtime: true
       content: |
           [Match]
-          Name=eth0
+          Name=en*
+
           [Network]
+          Address=10.0.0.1
+          Gateway=10.0.0.254
           DNS=8.8.8.8
 
   etcd2:
