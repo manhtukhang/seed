@@ -10,11 +10,11 @@ coreos:
       command: start
     - name: fleet.service
       command: start
-    - name: 00-enp0s3.network
+    - name: 00-static.network
       runtime: true
       content: |
           [Match]
-          Name=enp0s3
+          Name=en*
 
           [Network]
           Address=10.0.0.1/24
