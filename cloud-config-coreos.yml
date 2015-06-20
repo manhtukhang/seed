@@ -13,13 +13,13 @@ coreos:
     - name: 00-static.network
       runtime: true
       content: |
-          [Match]
-          Name=en*
-
-          [Network]
-          Address=10.0.0.1/24
-          Gateway=10.0.0.254
-          DNS=8.8.8.8
+        [Match]
+        Name=en*
+        
+        [Network]
+        Address=10.0.0.1/24
+        Gateway=10.0.0.254
+        DNS=8.8.8.8
 
   etcd2:
     name: coreos-seed-01
