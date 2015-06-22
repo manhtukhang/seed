@@ -17,15 +17,15 @@ write_files:
 coreos:
 
   units:
-    - name: etcd2.service
-      command: start
-    - name: fleet.service
-      command: start
     - name: systemd-networkd
       command: stop
     - name: 00-static.network
       runtime: true
     - name: systemd-networkd
+      command: start
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
       command: start
 
   etcd2:
