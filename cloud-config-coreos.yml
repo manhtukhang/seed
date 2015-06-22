@@ -22,9 +22,11 @@ coreos:
     - name: fleet.service
       command: start
     - name: systemd-networkd
-      command: restart
-
-
+      command: stop
+    - name: 00-static.network
+      runtime: true
+    - name: systemd-networkd
+      command: start
 
   etcd2:
     name: coreos-seed-01
