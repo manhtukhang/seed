@@ -11,6 +11,5 @@ rancher:
     dns:
       nameservers:
     	- 8.8.8.8
-    	- 8.8.8.8
 
     hostname: rancher-master
