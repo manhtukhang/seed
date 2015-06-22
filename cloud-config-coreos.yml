@@ -10,16 +10,24 @@ coreos:
       command: start
     - name: fleet.service
       command: start
-    - name: 00-static.network
-      runtime: true
-      content: |
-        [Match]
-        Name=en*
-        
-        [Network]
-        Address=10.0.0.1/24
-        Gateway=10.0.0.254
-        DNS=8.8.8.8
+
+  write_files:
+    -   content: |
+          [Match]
+          Name=enp0s3
+
+          [Network]
+          Gateway=10.0.0.254
+          Address=10.0.0.1/24
+          DNS=8.8.8.8
+
+        path: /etc/systemd/network/00-static.network
+
+  units:
+    - name: systemd-networkd
+      command: restart
+
+
 
   etcd2:
     name: coreos-seed-01
