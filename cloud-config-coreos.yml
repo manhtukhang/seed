@@ -19,7 +19,7 @@ coreos:
         Address=10.0.0.1/24
         DNS=8.8.8.8
     - name: systemd-networkd
-      command: restart
+      command: start
     - name: etcd2.service
       command: start
     - name: fleet.service
