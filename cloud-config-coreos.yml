@@ -6,6 +6,8 @@ ssh_authorized_keys:
 coreos:
 
   units:
+    - name: systemd-networkd
+      command: stop
     - name: 00-static.network
       runtime: true
       content:  |
@@ -16,7 +18,8 @@ coreos:
         Gateway=10.0.0.254
         Address=10.0.0.1/24
         DNS=8.8.8.8
-
+    - name: systemd-networkd
+      command: restart
     - name: etcd2.service
       command: start
     - name: fleet.service
